@@ -8,6 +8,15 @@ const egresosStore = JSON.parse(localStorage.getItem("egresos"));
 var ingresos = [];
 var egresos = [];
 
+const swalsuccess = (titulo) => {
+  Swal.fire({
+    icon: "success",
+    title: titulo,
+    showConfirmButton: false,
+    timer: 2000,
+  });
+};
+
 const mostrarDatosPorPrimeraVez = () => {
   if (ingresosStorage === null) {
     ingresos = [
@@ -163,7 +172,6 @@ const agregarDato = () => {
   let descripcion = d.getElementById("descripcion");
   let valor = d.getElementById("valor");
   let helpmensaje = d.getElementById("helpmensaje");
-  let mensaje = "";
 
   descripcion.addEventListener("keydown", (e) => {
     descripcion.classList.remove("is-invalid");
@@ -176,13 +184,17 @@ const agregarDato = () => {
   d.addEventListener("click", (event) => {
     const targetev = event.target;
     const isButton = targetev.closest(boton);
-
+    let mensaje = "";
     if (isButton) {
       if (descripcion.value.trim() === "") {
         descripcion.classList.add("is-invalid");
+        mensaje =
+          "<p>Falta la descripcion, complete el campo correctamente.</p>";
       }
       if (isNaN(parseFloat(valor.value.trim()))) {
         valor.classList.add("is-invalid");
+        mensaje +=
+          "<p>Falta el campo valor, introduzca una cantidad correcta.</p>";
       }
 
       if (document.getElementsByClassName("is-invalid").length === 0) {
@@ -197,6 +209,7 @@ const agregarDato = () => {
             cargarCabecero();
             cargarIngresos();
             forma.reset();
+            swalsuccess("Se agrego un nuevo ingreso:");
             break;
 
           case "egreso":
@@ -206,11 +219,19 @@ const agregarDato = () => {
             cargarCabecero();
             cargarEgresos();
             forma.reset();
+            swalsuccess("Se agrego un nuevo egreso");
             break;
 
           default:
             break;
         }
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: select.value,
+          html: mensaje,
+          footer: "",
+        });
       }
     }
   });
