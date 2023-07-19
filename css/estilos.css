@@ -30,7 +30,7 @@ body {
 }
 
 .cabecero {
-  height: 40vh;
+  height: 70vh;
   background-size: cover;
   background-position: center;
   position: relative;
@@ -182,12 +182,12 @@ body {
   outline: none;
 }
 
-.contenedor {
+/* .contenedor {
   width: 860px;
   margin: 60px auto;
-}
+} */
 
-.ingreso {
+/* .ingreso {
   float: left;
   width: 370px;
   margin-right: 70px;
@@ -196,7 +196,7 @@ body {
 .egreso {
   float: left;
   width: 370px;
-}
+} */
 
 h2 {
   text-transform: uppercase;
@@ -325,3 +325,6 @@ h2 {
 .tooltip {
   display: none;
 }
+
+
+btn btn-icon btn-primary

@@ -1,0 +1,342 @@
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+  font-family: "Relaway", Courier, monospace !important;
+  font-weight: 600;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+h1,
+h2,
+h3 {
+  font-family: "Playfair", serif, Courier, monospace !important;
+}
+header h1 span {
+  color: #037bc0;
+}
+
+header {
+  padding: 1.5rem 0;
+}
+header h1,
+h2 {
+  text-align: center;
+}
+/*h1 tamaño de fuente 5rem.
+  h2 tamaño de fuente 4rem.
+  H3 tamaño de fuente 4rem.*/
+h1 {
+  font: size 5rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+/* Estableces el contenedor padre con GRID */
+body {
+  display: grid;
+  grid-template-columns: repeat(1, auto);
+  grid-template-rows: 1fr;
+  min-height: 100vh;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+}
+
+/*<!-- ----------------NAV---------------- -->*/
+nav#nav-main ul.menu {
+  display: grid;
+  grid-template-columns: repeat(6, auto);
+  justify-content: space-evenly;
+}
+
+nav#nav-main {
+  background: #1586fb;
+  padding: 10px;
+  box-shadow: 0px 9px 4px 2px #000;
+}
+
+nav#nav-main a {
+  color: white;
+  text-decoration: none;
+}
+/* HERO IMAGE */
+.hero-image {
+  min-height: 25rem;
+  background-image: url(../images/principal.jpg);
+  background-repeat: no-repeat;
+  color: #fff;
+  background-position: 100% 90%;
+  background-size: cover;
+}
+.hero-image-cat1 {
+  min-height: 25rem;
+  background-image: url(../images/categoria1.jpg);
+  background-repeat: no-repeat;
+  color: #fff;
+  background-position: 100% 90%;
+  background-size: cover;
+}
+.hero-image-cat2 {
+  min-height: 25rem;
+  background-image: url(../images/categoria2.jpg);
+  background-repeat: no-repeat;
+  color: #fff;
+  background-position: 100% 90%;
+  background-size: cover;
+}
+.hero-image div,
+.hero-image-cat1 div,
+.hero-image-cat2 div {
+  min-height: inherit;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  background-color: #0000009c;
+  text-align: center;
+}
+ul {
+  padding: 0px;
+  list-style: none;
+}
+main {
+  padding: 2% 5%;
+}
+section#seccion-1,
+section#seccion-2,
+section#seccion-3,
+section.categorias {
+  margin: 2.5rem 0;
+}
+
+span.precio {
+  display: block;
+  margin-top: 12px;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+/* SECCIÓN CATEGORÍAS */
+div.oficina,
+div.hogar,
+div.cocina,
+#contactFormbox {
+  box-shadow: 0 0 2px #1586fb;
+  border-radius: 10px 10px 0 0;
+  background: #1586fb1f;
+}
+/* SECCIÓN FOOTER */
+
+footer {
+  text-align: center;
+  background: #3f3f3f;
+  color: white;
+}
+
+section#disclaimer {
+  background: #1e1e1e;
+  padding: 15px 1rem;
+}
+
+@media only screen and (max-width: 768px) {
+  /* Estableces el contenedor padre con GRID */
+  .hero-image {
+    min-height: 20rem;
+    background-position: center;
+  }
+  .hero-image-cat1 {
+    min-height: 20rem;
+    background-position: center;
+  }
+  .hero-image-cat2 {
+    min-height: 20rem;
+    background-position: center;
+  }
+}
+
+/*++++++++++++++++++++++Animaciones ++++++++++++++++++++++++++++++++++++++++++++++*/
+.btn-zoom {
+  transition: all 0.2s ease;
+}
+
+.btn-zoom:hover {
+  transform: scale(1.1);
+  animation-timing-function: ease;
+}
+
+/* REBOTE INFINITO */
+.btn-bounce {
+  animation: bobble 1s ease infinite;
+}
+
+@keyframes bobble {
+  0% {
+    transform: translateY(3px);
+  }
+
+  50% {
+    transform: translateY(0px);
+  }
+
+  100% {
+    transform: translateY(3px);
+  }
+}
+
+.animateboxgalery:hover {
+  transform: translate(0px, -5px);
+  cursor: pointer;
+}
+
+article#producto-1:hover,
+article#producto-2:hover,
+article#producto-3:hover,
+article#producto-4:hover,
+article#producto-5:hover,
+article#producto-6:hover {
+  transform: translate(0px, -5px);
+  cursor: pointer;
+}
+
+article#producto-1,
+article#producto-2,
+article#producto-3,
+article#producto-4,
+article#producto-5,
+article#producto-6,
+.columna-1.col-lg-6,
+.columna-2.col-lg-6 {
+  transition: all 0.3s cubic-bezier(0.25, 0.1, 0.58, 1);
+}
+/*Para galera*/
+.animateboxgalery div img {
+  max-width: 100%;
+  /* Escala la imagen hasta su ancho máximo permitido */
+  max-height: 100%;
+  /* Escala la imagen hasta su alto máximo permitido */
+  transition: transform 0.3s;
+}
+.animateboxgalery div img:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+/*Para galera*/
+/* hover imagen zoom */
+.columna-1.col-lg-6 img {
+  max-width: 100%;
+  /* Escala la imagen hasta su ancho máximo permitido */
+  max-height: 100%;
+  /* Escala la imagen hasta su alto máximo permitido */
+  transition: transform 0.3s;
+}
+
+.columna-1.col-lg-6 img:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+/* hover imagen categorías  */
+div.oficina img,
+div.hogar img,
+div.cocina img {
+  border-radius: 10px 10px 0 0;
+  max-width: 100%;
+  /* Escala la imagen hasta su ancho máximo permitido */
+  max-height: 100%;
+  /* Escala la imagen hasta su alto máximo permitido */
+  transition: transform 0.3s;
+}
+
+div.oficina img:hover,
+div.hogar img:hover,
+div.cocina img:hover {
+  transform: scale(1.1);
+  /* Aplica la escala deseada (en este caso, 50%) al hacer hover */
+  cursor: pointer;
+}
+
+/* TEMA OSCURO */
+
+body {
+  transition: 0.3s ease background;
+}
+
+body.dark {
+  background: #09111a;
+  /*color: white;*/
+}
+
+body.dark .box-descripcion,
+body.dark #box-descripcion,
+body.dark .columna-2,
+body.dark footer {
+  background: #121f2e !important;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.16);
+}
+
+body.dark .columna-2 {
+  border-top: 1px solid #00408385;
+  border-bottom: 1px solid #00408385;
+  border-right: 1px solid #00408385;
+}
+
+body.dark
+  nav:not(#box-categorias nav):not(#box-nosotros nav):not(#box-soporte nav) {
+  background: #121f2e !important;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.16);
+}
+
+.switch {
+  background: #343d5b;
+  border-radius: 1000px;
+  border: none;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  outline: none;
+}
+
+.switch::after {
+  content: "";
+  display: block;
+  width: 35px;
+  height: 30px;
+  position: absolute;
+  background: #f1f1f1;
+  top: 0;
+  left: 0;
+  right: unset;
+  border-radius: 100px;
+  transition: 0.3s ease all;
+  box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.switch.active {
+  background: #1586fb;
+  color: #000;
+}
+
+.switch.active::after {
+  left: unset;
+  right: 0;
+}
+
+.switch span {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  display: block;
+  background: none;
+  color: #fff;
+}

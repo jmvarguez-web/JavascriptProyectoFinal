@@ -7,6 +7,14 @@ const ingresosStorage = JSON.parse(localStorage.getItem("ingresos"));
 const egresosStore = JSON.parse(localStorage.getItem("egresos"));
 var ingresos = [];
 var egresos = [];
+const btnSwitch = document.querySelector("#switch");
+if (localStorage.getItem("dark-mode") === "true") {
+  document.body.classList.add("dark");
+  btnSwitch.classList.add("active");
+} else {
+  document.body.classList.remove("dark");
+  btnSwitch.classList.remove("active");
+}
 
 const swalsuccess = (titulo) => {
   Swal.fire({
@@ -118,11 +126,14 @@ const cargarIngresos = () => {
 };
 
 const crearIngresoHTML = (consept, valor, id) => {
+  let porcentaje = valor / totalIngresos();
+
   return `<div class="elemento limpiarEstilos">
 <div class="elemento_descripcion">${consept}</div>
 <div class="derecha limpiarEstilos">
     <div class="elemento_valor">+ ${formatoMoneda(valor)} MXN
     </div>
+    <div class="elemento_porcentaje">${formatoPorcentaje(porcentaje)}</div>
     <div class="elemento_eliminar">
         <button type="button" class="elemento_eliminar--btn"><ion-icon
                 name="close-circle-outline" data-id="${id}"></ion-icon></button>
@@ -148,12 +159,14 @@ const cargarEgresos = () => {
 };
 
 const crearEgresoHTML = (consept, valor, id) => {
+  let porcentaje = valor / totalIngresos();
+
   return `                <div class="elemento limpiarEstilos">
   <div class="elemento_descripcion">${consept}</div>
   <div class="derecha limpiarEstilos">
       <div class="elemento_valor">-${formatoMoneda(valor)} MXN
       </div>
-      <div class="elemento_porcentaje"></div>
+      <div class="elemento_porcentaje">${formatoPorcentaje(porcentaje)}</div>
       <div class="elemento_eliminar">
           <button type="button" class="elemento_eliminar--btn"><ion-icon
                   name="close-circle-outline"  data-id="${id}"></ion-icon></button>
@@ -291,12 +304,37 @@ const eliminarIngreso = () => {
   });
   // let indiceEliminar = egresos.findIndex((egreso) => egreso.id === id);
 };
+
+const darkMode = () => {
+  // DARK MODE
+
+  // SE DECLARA LA CONSTANTE QUE ES EL ELEMENTO DEL DOM
+  const btnSwitch = document.querySelector("#switch");
+
+  // FUNCIÓN DE EVENTO DE TIPO CLICK
+  btnSwitch.addEventListener("click", () => {
+    // AL DAR CLICK SE AGREGA O SE QUITA LA CLASE "DARK" AL BODY
+    document.body.classList.toggle("dark");
+
+    // AL DAR CLICK SE AGREGA O SE QUITA LA CLASE "ACTIVE" AL BOTÓN
+    btnSwitch.classList.toggle("active");
+
+    // guardar el modo dark en local storage con una variable y un valor
+    if (document.body.classList.contains("dark")) {
+      localStorage.setItem("dark-mode", "true");
+    } else {
+      localStorage.setItem("dark-mode", "false");
+    }
+  });
+};
+
 d.addEventListener("DOMContentLoaded", () => {
   mostrarDatosPorPrimeraVez();
   cargarCabecero();
   cargarIngresos();
   cargarEgresos();
   agregarDato();
-  eliminarIngreso();
-  eliminarEgreso();
+  darkMode();
+  //eliminarIngreso();
+  // eliminarEgreso();
 });

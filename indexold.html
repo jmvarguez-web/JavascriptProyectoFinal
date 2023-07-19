@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+
+    <link rel="stylesheet" href="./css/estilos.css">
+
+
+    <link href="
+    https://cdn.jsdelivr.net/npm/sweetalert2@11.7.18/dist/sweetalert2.min.css
+    " rel="stylesheet">
+</head>
+
+<body>
+
+    <section class="cabecero">
+        <div class="presupuesto">
+            <div class="presupuesto_titulo">
+                Presupuesto Disponible
+            </div>
+
+            <div id="presupuesto" class="presupuesto_valor">
+
+                +2,000.00 MXN
+
+            </div>
+            <div class="presupuesto_ingreso limpiarEstilos">
+                <div class="presupuesto_ingreso--texto">Ingresos</div>
+                <div class="derecha limpiarEstilos">
+                    <div id="ingresos" class="presupuesto_ingreso--valor">4,000.00</div>
+                    <div id="" class="presupuesto_ingreso--porcentaje"></div>
+
+                </div>
+            </div>
+            <div class="presupuesto_egreso limpiarEstilos">
+                <div class="presupuesto_egreso--texto">Egresos</div>
+                <div class="derecha limpiarEstilos">
+                    <div id="egresos" class="presupuesto_egreso--valor">-1,900.00</div>
+                    <div id="porcentaje" class="presupuesto_egreso--porcentaje">45%</div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- formulario -->
+    <section class="formulario" onsubmit="return false;">
+        <form id="forma">
+            <div class="agregar">
+
+                <div class="agregar_contenedor">
+                    <select class="agregar_tipo" id="tipo" required>
+                        <option value="ingreso" selected>+</option>
+                        <option value="egreso">-</option>
+
+                    </select>
+
+                    <input type="text" class="agregar_descripcion " id="descripcion" placeholder="Agregar Descripción">
+
+
+                    <input type="text" class="agregar_valor " id="valor" placeholder="valor">
+                    <button type="submit" class="agregar_btn"><ion-icon
+                            name="checkmark-circle-outline"></ion-icon></button>
+
+
+                </div>
+                <span id="helpmensaje" style="display: block;text-align: center;"> </span>
+            </div>
+        </form>
+    </section>
+    <!-- formulario fin -->
+
+    <div class="contenedor limpiarEstilos">
+        <div class="ingreso">
+            <h2 class="ingreso_titulo ">Ingreso</h2>
+            <div id="lista-ingresos">
+                <div class="elemento limpiarEstilos">
+                    <div class="elemento_descripcion">Salario</div>
+                    <div class="derecha limpiarEstilos">
+                        <div class="elemento_valor">+ 2,200.00 MXN
+                        </div>
+                        <div class="elemento_eliminar">
+                            <button type="button" class="elemento_eliminar_btn"><ion-icon
+                                    name="close-circle-outline"></ion-icon></button>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="elemento limpiarEstilos">
+                    <div class="elemento_descripcion">Venta de coche</div>
+                    <div class="derecha limpiarEstilos">
+                        <div class="elemento_valor">+ 1500.00 MXN
+                        </div>
+                        <div class="elemento_eliminar">
+                            <button type="button" class="elemento_eliminar_btn"><ion-icon
+                                    name="close-circle-outline"></ion-icon></button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="egreso">
+            <h2 class="egreso_titulo ">Egresos</h2>
+            <div id="lista-egresos">
+                <div class="elemento limpiarEstilos">
+                    <div class="elemento_descripcion">Renta departamento</div>
+                    <div class="derecha limpiarEstilos">
+                        <div class="elemento_valor">-900.00 MXN
+                        </div>
+                        <div class="elemento_porcentaje">25%</div>
+                        <div class="elemento_eliminar">
+                            <button type="button" class="elemento_eliminar_btn"><ion-icon
+                                    name="close-circle-outline"></ion-icon></button>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="elemento limpiarEstilos">
+                    <div class="elemento_descripcion">Ropa</div>
+                    <div class="derecha limpiarEstilos">
+                        <div class="elemento_valor">-400.00 MXN
+                        </div>
+                        <div class="elemento_porcentaje">9%</div>
+                        <div class="elemento_eliminar">
+                            <button type="button" class="elemento_eliminar_btn"><ion-icon
+                                    name="close-circle-outline"></ion-icon></button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/ionicons@latest/dist/ionicons.js"></script>
+    <script src="
+        https://cdn.jsdelivr.net/npm/sweetalert2@11.7.18/dist/sweetalert2.all.min.js
+        "></script>
+
+
+    <script type="module" src="./js/app.js" defer></script>
+
+</body>
+
+</html>
