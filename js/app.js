@@ -7,6 +7,7 @@ const ingresosStorage = JSON.parse(localStorage.getItem("ingresos"));
 const egresosStore = JSON.parse(localStorage.getItem("egresos"));
 var ingresos = [];
 var egresos = [];
+
 const btnSwitch = document.querySelector("#switch");
 if (localStorage.getItem("dark-mode") === "true") {
   document.body.classList.add("dark");
@@ -55,17 +56,31 @@ const mostrarDatosPorPrimeraVez = () => {
 
   console.log("datos cargados correctamente");
 };
+const porcentajeEgreso = (tingreso, tegreso) => {
+  let porcentajeEgreso = 0;
 
+  if (tingreso === 0 && tegreso === 0) {
+    porcentajeEgreso = 0;
+  } else {
+    porcentajeEgreso = tegreso / tingreso;
+  }
+
+  if (!isFinite(porcentajeEgreso)) {
+    return 0;
+  } else {
+    return porcentajeEgreso;
+  }
+};
 const cargarCabecero = () => {
-  const presupuesto = totalIngresos() - totalEgresos();
-
-  const porcentajeEgreso = totalEgresos() / totalIngresos();
+  let tingreso = totalIngresos();
+  let tegreso = totalEgresos();
+  let presupuesto = tingreso - tegreso;
+  let porcentaje = porcentajeEgreso(tingreso, tegreso);
 
   d.getElementById("presupuesto").textContent = formatoMoneda(presupuesto);
   d.getElementById("ingresos").textContent = formatoMoneda(totalIngresos());
   d.getElementById("egresos").textContent = formatoMoneda(totalEgresos());
-  d.getElementById("porcentaje").textContent =
-    formatoPorcentaje(porcentajeEgreso);
+  d.getElementById("porcentaje").textContent = formatoPorcentaje(porcentaje);
 
   console.log(formatoMoneda(presupuesto));
   console.log(formatoPorcentaje(porcentajeEgreso));
@@ -159,7 +174,8 @@ const cargarEgresos = () => {
 };
 
 const crearEgresoHTML = (consept, valor, id) => {
-  let porcentaje = valor / totalIngresos();
+  //let porcentaje = valor / totalEgresos();
+  let porcentaje = valor / totalEgresos();
 
   return `                <div class="elemento limpiarEstilos">
   <div class="elemento_descripcion">${consept}</div>
@@ -221,6 +237,7 @@ const agregarDato = () => {
             console.log(valores);
             cargarCabecero();
             cargarIngresos();
+            cargarEgresos();
             forma.reset();
             swalsuccess("Se agrego un nuevo ingreso:");
             break;
@@ -230,6 +247,7 @@ const agregarDato = () => {
             egresos.push(valoresb);
             localStorage.setItem("egresos", JSON.stringify(egresos));
             cargarCabecero();
+            cargarIngresos();
             cargarEgresos();
             forma.reset();
             swalsuccess("Se agrego un nuevo egreso");
@@ -269,6 +287,7 @@ const eliminarEgreso = () => {
         // Recargar el cabecero
         cargarCabecero();
         // Recargar los egresos
+        cargarIngresos();
         cargarEgresos();
         eliminarEgreso();
       }
@@ -298,6 +317,7 @@ const eliminarIngreso = () => {
         cargarCabecero();
         // Recargar los ingresos
         cargarIngresos();
+        cargarEgresos();
         eliminarIngreso();
       }
     });

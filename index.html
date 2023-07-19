@@ -28,7 +28,7 @@
         <h1>Tienda de <span>muebles</span></h1>
     </header> -->
     <!-- ----------------NAV---------------- -->
-    <nav class="navbar sticky-top navbar-expand-lg bg-body-tertiary bg-primary">
+    <nav class="navbar sticky-top navbar-expand-lg  bg-primary">
         <div class="container-fluid">
 
             <button class="navbar-toggler border border-white" type="button" data-bs-toggle="collapse"
@@ -55,8 +55,8 @@
     </article> -->
 
 
-    <section class="cabecero">
-        <div class="presupuesto">
+    <section class="cabecero ">
+        <div class="presupuesto ">
             <div class="presupuesto_titulo">
                 Presupuesto Disponible
             </div>
@@ -86,11 +86,41 @@
         </div>
     </section>
 
+    <section class="  formulario agregar">
+        <form id="forma" onsubmit="return false;" class="container-md">
+            <div class=" row g-3 d-flex justify-content-center">
 
+                <div class="col-md-2">
+                    <select class="form-control agregar_tipo" id="tipo">
+                        <option value="ingreso" selected>+</option>
+                        <option value="egreso">-</option>
+
+                    </select>
+
+                </div>
+                <div class="col-md-4">
+
+                    <input type="text" class="form-control agregar_descripcion " id="descripcion"
+                        placeholder="Agregar Descripción">
+                </div>
+                <div class="col-md-2">
+
+                    <input type="text" class="form-control agregar_valor " id="valor" placeholder="valor">
+                </div>
+
+                <div class="col-md-2 d-flex justify-content-center">
+
+                    <button type="button" class=" agregar_btn "><ion-icon
+                            name="checkmark-circle-outline"></ion-icon></button>
+                </div>
+
+            </div>
+        </form>
+    </section>
 
     <!-- formulario -->
-    <section class="formulario" onsubmit="return false;">
-        <form id="forma">
+    <!-- <section class="formulario">
+        <form id="forma" class="row g-3" onsubmit="return false;">
             <div class="agregar">
 
                 <div class="agregar_contenedor">
@@ -104,7 +134,7 @@
 
 
                     <input type="text" class="agregar_valor " id="valor" placeholder="valor">
-                    <button type="submit" class="agregar_btn btn btn-success btn-circle"><ion-icon
+                    <button type="submit" class="agregar_btn "><ion-icon
                             name="checkmark-circle-outline"></ion-icon></button>
 
 
@@ -112,18 +142,18 @@
                 <span id="helpmensaje" style="display: block;text-align: center;"> </span>
             </div>
         </form>
-    </section>
+    </section> -->
     <!-- formulario fin -->
 
 
-    <main class="py-3 px-3 px-xs-3 px-sm-5 px-lg-5">
+    <main class="py-3 px-3 px-xs-3 px-sm-5 px-lg-5 container-lg">
 
 
         <!-- ----------------SECCION 2---------------- -->
 
 
 
-        <div class="contenedor limpiarEstilos row my-3">
+        <div class="contenedor limpiarEstilos row my-3 ">
             <div class="ingreso col-lg-6 pb-4">
                 <h2 class="ingreso_titulo ">Ingreso</h2>
                 <div id="lista-ingresos">
